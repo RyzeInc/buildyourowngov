@@ -39,12 +39,6 @@ const PHASE_COLORS: Record<string, string> = {
   identity: "#EC4899",
 };
 
-const SLIDER_COLORS: Record<string, string> = {
-  pressFreedom: "#06B6D4",
-  civilRights: "#F97316",
-  politicalParticipation: "#22C55E",
-};
-
 export default function DesignStudio() {
   const [selections, setSelections] = useState<Record<string, string>>({});
   const [sliders, setSliders] = useState<Record<string, number>>({
@@ -668,7 +662,7 @@ export default function DesignStudio() {
                     fontWeight: 600,
                   }}
                 >
-                  <AppIcon name={p.icon} size={10} style={{ flexShrink: 0, opacity: 0.85 }} />{" "}{p.label}
+                  <AppIcon name={p.icon} size={10} weight="fill" color={p.color ?? "#FBBF24"} style={{ flexShrink: 0 }} />{" "}{p.label}
                 </span>
               ))}
             </div>
@@ -875,7 +869,7 @@ export default function DesignStudio() {
                       }}
                     >
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#fff", display: "flex", alignItems: "center", gap: 5 }}>
-                        <AppIcon name={s.icon} size={16} weight="duotone" color={SLIDER_COLORS[s.id] ?? "#A855F7"} />{s.label}
+                        <AppIcon name={s.icon} size={16} weight="duotone" color={s.color ?? "#A855F7"} />{s.label}
                       </div>
                       <div
                         style={{
@@ -1024,7 +1018,7 @@ export default function DesignStudio() {
                                   marginBottom: 4,
                                 }}
                               >
-                                <AppIcon name={trait.icon} size={13} color={selected ? "#14B8A6" : "rgba(255,255,255,0.5)"} />
+                                <AppIcon name={trait.icon} size={15} weight={selected ? "fill" : "duotone"} color={selected ? (trait.color ?? "#14B8A6") : `${trait.color ?? "#14B8A6"}88`} />
                                 <span
                                   style={{
                                     fontSize: 12,
@@ -1204,7 +1198,7 @@ export default function DesignStudio() {
                   <span
                     style={{ color: "rgba(255,255,255,0.7)", marginLeft: 4, display: "inline-flex", alignItems: "center", gap: 4 }}
                   >
-                    <AppIcon name={opt.icon} size={11} />{opt.label}
+                    <AppIcon name={opt.icon} size={13} weight="fill" color={opt.color ?? colors.accent} />{opt.label}
                   </span>
                 </div>
               );
@@ -1229,7 +1223,7 @@ export default function DesignStudio() {
                   <span
                     style={{ color: "rgba(255,255,255,0.7)", marginLeft: 4, display: "inline-flex", alignItems: "center", gap: 4 }}
                   >
-                    <AppIcon name={trait.icon} size={11} />{trait.label}
+                    <AppIcon name={trait.icon} size={13} weight="fill" color={trait.color ?? "#14B8A6"} />{trait.label}
                   </span>
                 </div>
               );
@@ -1363,7 +1357,7 @@ export default function DesignStudio() {
                           color: "rgba(255,255,255,0.7)",
                         }}
                       >
-                        <AppIcon name={ig.icon} size={12} style={{ flexShrink: 0 }} />{" "}{ig.label}
+                        <AppIcon name={ig.icon} size={14} weight="duotone" color={ig.color ?? "rgba(255,255,255,0.7)"} style={{ flexShrink: 0 }} />{" "}{ig.label}
                       </span>
                       <span
                         style={{
@@ -1527,7 +1521,7 @@ export default function DesignStudio() {
                         marginBottom: 4,
                       }}
                     >
-                      <AppIcon name={s.icon} size={11} style={{ flexShrink: 0 }} />{" "}{s.label}
+                      <AppIcon name={s.icon} size={13} weight="duotone" color={s.color ?? "rgba(255,255,255,0.6)"} style={{ flexShrink: 0 }} />{" "}{s.label}
                     </div>
                     <div
                       style={{
@@ -1622,7 +1616,7 @@ export default function DesignStudio() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <AppIcon name={perk.icon} size={18} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <AppIcon name={perk.icon} size={22} weight="duotone" color={perk.color ?? "#FBBF24"} style={{ flexShrink: 0, marginTop: 2 }} />
                   <div>
                     <div
                       style={{
@@ -1777,7 +1771,7 @@ export default function DesignStudio() {
                       alignItems: "flex-start",
                     }}
                   >
-                    <AppIcon name={risk.icon} size={16} style={{ flexShrink: 0, marginTop: 1 }} />
+                    <AppIcon name={risk.icon} size={18} weight="fill" color={rc} style={{ flexShrink: 0, marginTop: 1 }} />
                     <div style={{ flex: 1 }}>
                       <div
                         style={{
@@ -1892,7 +1886,7 @@ function OptionButton({
   colors,
   onSelect,
 }: {
-  opt: { id: string; label: string; desc: string; examples: string; icon?: string };
+  opt: { id: string; label: string; desc: string; examples: string; icon?: string; color?: string };
   isSelected: boolean;
   category: string;
   colors: { bg: string; accent: string; light: string; text: string };
@@ -1935,7 +1929,7 @@ function OptionButton({
       onMouseLeave={handleMouseLeave}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
-        {opt.icon && <AppIcon name={opt.icon} size={18} weight={isSelected ? "fill" : "duotone"} color={isSelected ? colors.accent : `${colors.accent}88`} />}
+        {opt.icon && <AppIcon name={opt.icon} size={18} weight={isSelected ? "fill" : "duotone"} color={isSelected ? (opt.color ?? colors.accent) : `${opt.color ?? colors.accent}88`} />}
         <span
           style={{
             fontWeight: 600,

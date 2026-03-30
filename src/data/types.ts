@@ -26,6 +26,7 @@ export interface DesignOption {
   desc: string;
   examples: string;
   icon?: string;
+  color?: string;
 }
 
 export interface CivicTrait {
@@ -34,6 +35,7 @@ export interface CivicTrait {
   desc: string;
   category: 'governance' | 'social' | 'economic' | 'military';
   icon: string;
+  color?: string;
   effects: string[];
   incompatible?: string[];
 }
@@ -42,6 +44,7 @@ export interface InterestGroup {
   id: string;
   label: string;
   icon: string;
+  color?: string;
   desc: string;
 }
 

@@ -47,61 +47,61 @@ export const DESIGN_OPTIONS: Record<string, DesignOption[]> = {
   // PHASE 1: FOUNDATION
   // Options ordered alphabetically to avoid implied ranking
   authority: [
-    { id: "autocratic", label: "Autocratic", desc: "Single leader holds paramount authority. Decisions are swift but unchecked. Stability depends on the character and capacity of the ruler.", examples: "Russia, Belarus, various Central Asian and Middle Eastern states", icon: "Crown" },
-    { id: "democratic", label: "Democratic", desc: "Power derived from popular consent through regular elections. Citizens choose representatives who govern on their behalf.", examples: "India, Brazil, South Africa, Germany, Japan, Indonesia, and many others globally", icon: "SealCheck" },
-    { id: "oligarchic", label: "Oligarchic", desc: "Power concentrated in a select group — an elite council, military junta, or ruling class. Decisions made by few on behalf of many.", examples: "Singapore (administered by a dominant elite), historical Venice, various juntas", icon: "Users" },
-    { id: "single-party", label: "Single-Party State", desc: "One political party controls the state apparatus. Opposition parties are banned or marginalized. The party defines the national direction.", examples: "China, Cuba, Vietnam, North Korea", icon: "Star" },
-    { id: "theocratic", label: "Theocratic", desc: "Religious authority supersedes political. Government legitimacy flows from divine mandate or religious law interpreted by clerical institutions.", examples: "Iran, Vatican City, Afghanistan under Taliban rule", icon: "Book" },
+    { id: "autocratic", label: "Autocratic", desc: "Single leader holds paramount authority. Decisions are swift but unchecked. Stability depends on the character and capacity of the ruler.", examples: "Russia, Belarus, various Central Asian and Middle Eastern states", icon: "Crown", color: "#FFD700" },
+    { id: "democratic", label: "Democratic", desc: "Power derived from popular consent through regular elections. Citizens choose representatives who govern on their behalf.", examples: "India, Brazil, South Africa, Germany, Japan, Indonesia, and many others globally", icon: "SealCheck", color: "#3B82F6" },
+    { id: "oligarchic", label: "Oligarchic", desc: "Power concentrated in a select group — an elite council, military junta, or ruling class. Decisions made by few on behalf of many.", examples: "Singapore (administered by a dominant elite), historical Venice, various juntas", icon: "Users", color: "#8B5CF6" },
+    { id: "single-party", label: "Single-Party State", desc: "One political party controls the state apparatus. Opposition parties are banned or marginalized. The party defines the national direction.", examples: "China, Cuba, Vietnam, North Korea", icon: "Star", color: "#EF4444" },
+    { id: "theocratic", label: "Theocratic", desc: "Religious authority supersedes political. Government legitimacy flows from divine mandate or religious law interpreted by clerical institutions.", examples: "Iran, Vatican City, Afghanistan under Taliban rule", icon: "Book", color: "#F59E0B" },
   ],
   // PHASE 2: INSTITUTIONS
   executive: [
-    { id: "presidential", label: "Presidential", desc: "Directly elected president serves as both head of state and government, independent of the legislature", examples: "USA, Brazil, South Korea", icon: "Bank" },
-    { id: "parliamentary", label: "Parliamentary", desc: "Prime minister drawn from legislature leads government; ceremonial head of state (president or monarch)", examples: "Germany, UK, India", icon: "Buildings" },
-    { id: "semi-presidential", label: "Semi-Presidential", desc: "Elected president shares executive power with a PM who is accountable to parliament", examples: "France, Russia", icon: "Scales" },
-    { id: "constitutional-monarchy", label: "Constitutional Monarchy", desc: "Hereditary monarch serves as head of state while elected PM governs day-to-day", examples: "Denmark, Japan, Sweden", icon: "CastleTurret" },
-    { id: "directorial", label: "Directorial / Collective", desc: "Executive power shared among a council of equals rather than a single leader", examples: "Switzerland (Federal Council)", icon: "Handshake" },
+    { id: "presidential", label: "Presidential", desc: "Directly elected president serves as both head of state and government, independent of the legislature", examples: "USA, Brazil, South Korea", icon: "Bank", color: "#60A5FA" },
+    { id: "parliamentary", label: "Parliamentary", desc: "Prime minister drawn from legislature leads government; ceremonial head of state (president or monarch)", examples: "Germany, UK, India", icon: "Buildings", color: "#A78BFA" },
+    { id: "semi-presidential", label: "Semi-Presidential", desc: "Elected president shares executive power with a PM who is accountable to parliament", examples: "France, Russia", icon: "Scales", color: "#F472B6" },
+    { id: "constitutional-monarchy", label: "Constitutional Monarchy", desc: "Hereditary monarch serves as head of state while elected PM governs day-to-day", examples: "Denmark, Japan, Sweden", icon: "CastleTurret", color: "#FBBF24" },
+    { id: "directorial", label: "Directorial / Collective", desc: "Executive power shared among a council of equals rather than a single leader", examples: "Switzerland (Federal Council)", icon: "Handshake", color: "#34D399" },
   ],
   legislative: [
-    { id: "bicameral-proportional", label: "Bicameral + Proportional", desc: "Two chambers; lower house elected by proportional representation ensuring minority voices", examples: "Germany, Netherlands, Argentina, South Africa", icon: "ChartBar" },
-    { id: "bicameral-majoritarian", label: "Bicameral + Majoritarian", desc: "Two chambers; winner-take-all districts (first-past-the-post or plurality voting)", examples: "USA, UK, India, Brazil", icon: "Trophy" },
-    { id: "unicameral", label: "Unicameral", desc: "Single legislative chamber — streamlined lawmaking but fewer internal checks", examples: "Denmark, Sweden, South Korea, Ghana, Peru", icon: "Scroll" },
-    { id: "bicameral-mixed", label: "Bicameral + Mixed", desc: "Two chambers combining proportional and majoritarian elements for balanced representation", examples: "Japan, South Korea, Italy, Mexico", icon: "Shuffle" },
+    { id: "bicameral-proportional", label: "Bicameral + Proportional", desc: "Two chambers; lower house elected by proportional representation ensuring minority voices", examples: "Germany, Netherlands, Argentina, South Africa", icon: "ChartBar", color: "#2DD4BF" },
+    { id: "bicameral-majoritarian", label: "Bicameral + Majoritarian", desc: "Two chambers; winner-take-all districts (first-past-the-post or plurality voting)", examples: "USA, UK, India, Brazil", icon: "Trophy", color: "#FBBF24" },
+    { id: "unicameral", label: "Unicameral", desc: "Single legislative chamber — streamlined lawmaking but fewer internal checks", examples: "Denmark, Sweden, South Korea, Ghana, Peru", icon: "Scroll", color: "#A78BFA" },
+    { id: "bicameral-mixed", label: "Bicameral + Mixed", desc: "Two chambers combining proportional and majoritarian elements for balanced representation", examples: "Japan, South Korea, Italy, Mexico", icon: "Shuffle", color: "#FB923C" },
   ],
   electoral: [
-    { id: "fptp", label: "First-Past-The-Post", desc: "Whoever gets the most votes in each district wins. Simple but can produce disproportionate results.", examples: "USA, UK, India, Canada, Kenya, Ghana", icon: "Medal" },
-    { id: "proportional-list", label: "Proportional Representation", desc: "Seats allocated to parties in proportion to their vote share. Encourages multi-party systems.", examples: "Netherlands, Sweden, South Africa, Argentina, Israel", icon: "ChartBar" },
-    { id: "mmp", label: "Mixed-Member Proportional", desc: "Combines local district winners with proportional top-up seats to balance representation.", examples: "Germany, New Zealand, South Korea, Bolivia", icon: "ArrowsCounterClockwise" },
-    { id: "ranked-choice", label: "Ranked Choice / STV", desc: "Voters rank candidates by preference. Eliminates spoiler effect and ensures majority support.", examples: "Australia, Ireland, Papua New Guinea, Fiji", icon: "ListNumbers" },
-    { id: "two-round", label: "Two-Round System", desc: "If no candidate wins a majority, the top candidates face a runoff. Used across all regions for presidential elections.", examples: "France, Brazil, many African and Central Asian republics", icon: "Repeat" },
+    { id: "fptp", label: "First-Past-The-Post", desc: "Whoever gets the most votes in each district wins. Simple but can produce disproportionate results.", examples: "USA, UK, India, Canada, Kenya, Ghana", icon: "Medal", color: "#F87171" },
+    { id: "proportional-list", label: "Proportional Representation", desc: "Seats allocated to parties in proportion to their vote share. Encourages multi-party systems.", examples: "Netherlands, Sweden, South Africa, Argentina, Israel", icon: "ChartBar", color: "#38BDF8" },
+    { id: "mmp", label: "Mixed-Member Proportional", desc: "Combines local district winners with proportional top-up seats to balance representation.", examples: "Germany, New Zealand, South Korea, Bolivia", icon: "ArrowsCounterClockwise", color: "#A3E635" },
+    { id: "ranked-choice", label: "Ranked Choice / STV", desc: "Voters rank candidates by preference. Eliminates spoiler effect and ensures majority support.", examples: "Australia, Ireland, Papua New Guinea, Fiji", icon: "ListNumbers", color: "#C084FC" },
+    { id: "two-round", label: "Two-Round System", desc: "If no candidate wins a majority, the top candidates face a runoff. Used across all regions for presidential elections.", examples: "France, Brazil, many African and Central Asian republics", icon: "Repeat", color: "#FB923C" },
   ],
   judicial: [
-    { id: "constitutional-court", label: "Dedicated Constitutional Court", desc: "Separate court focused exclusively on constitutional review with citizen access to challenge laws", examples: "Germany, South Africa, South Korea, Colombia, Turkey", icon: "BookBookmark" },
-    { id: "supreme-court", label: "Supreme Court (General)", desc: "Highest court handles both constitutional questions and final appellate cases", examples: "USA, India, Canada, Japan, Kenya", icon: "Scales" },
-    { id: "dual-court", label: "Dual Court System", desc: "Separate constitutional and supreme/cassation courts with distinct jurisdictions", examples: "Peru, France, Italy, Mexico, Brazil", icon: "Files" },
-    { id: "civil-law", label: "Code-Based Civil Law", desc: "Comprehensive written legal codes rather than case law precedent; judges as investigators rather than passive arbiters", examples: "Continental Europe, Latin America, Japan, much of Africa and Asia", icon: "Book" },
+    { id: "constitutional-court", label: "Dedicated Constitutional Court", desc: "Separate court focused exclusively on constitutional review with citizen access to challenge laws", examples: "Germany, South Africa, South Korea, Colombia, Turkey", icon: "BookBookmark", color: "#F472B6" },
+    { id: "supreme-court", label: "Supreme Court (General)", desc: "Highest court handles both constitutional questions and final appellate cases", examples: "USA, India, Canada, Japan, Kenya", icon: "Scales", color: "#FBBF24" },
+    { id: "dual-court", label: "Dual Court System", desc: "Separate constitutional and supreme/cassation courts with distinct jurisdictions", examples: "Peru, France, Italy, Mexico, Brazil", icon: "Files", color: "#60A5FA" },
+    { id: "civil-law", label: "Code-Based Civil Law", desc: "Comprehensive written legal codes rather than case law precedent; judges as investigators rather than passive arbiters", examples: "Continental Europe, Latin America, Japan, much of Africa and Asia", icon: "Book", color: "#FB923C" },
   ],
   federal: [
-    { id: "federal", label: "Federal", desc: "Power constitutionally shared between national and subnational governments with protected autonomy", examples: "Germany, Canada, India, Brazil, Nigeria, Australia", icon: "MapTrifold" },
-    { id: "unitary", label: "Unitary", desc: "Central government holds primary authority; local governments exist at central discretion", examples: "France, Japan, South Korea, Chile, Indonesia", icon: "Building" },
-    { id: "devolved", label: "Unitary with Devolution", desc: "Central government delegates specific powers to regions but retains ultimate sovereignty", examples: "United Kingdom, Italy, Spain, Philippines, South Africa", icon: "Shuffle" },
-    { id: "confederal", label: "Confederal", desc: "Loose alliance of sovereign states with a weak central body; members retain most power", examples: "European Union (partial), African Union (partial), historical Swiss Confederation before 1848", icon: "Globe" },
+    { id: "federal", label: "Federal", desc: "Power constitutionally shared between national and subnational governments with protected autonomy", examples: "Germany, Canada, India, Brazil, Nigeria, Australia", icon: "MapTrifold", color: "#38BDF8" },
+    { id: "unitary", label: "Unitary", desc: "Central government holds primary authority; local governments exist at central discretion", examples: "France, Japan, South Korea, Chile, Indonesia", icon: "Building", color: "#A78BFA" },
+    { id: "devolved", label: "Unitary with Devolution", desc: "Central government delegates specific powers to regions but retains ultimate sovereignty", examples: "United Kingdom, Italy, Spain, Philippines, South Africa", icon: "Shuffle", color: "#FBBF24" },
+    { id: "confederal", label: "Confederal", desc: "Loose alliance of sovereign states with a weak central body; members retain most power", examples: "European Union (partial), African Union (partial), historical Swiss Confederation before 1848", icon: "Globe", color: "#34D399" },
   ],
   // PHASE 3: GOVERNANCE
   // Options ordered alphabetically to avoid implied ranking
   economic: [
-    { id: "free-market", label: "Free Market Economy", desc: "Minimal state intervention, emphasis on private enterprise, deregulation, and individual economic freedom", examples: "USA, Singapore, Chile, Estonia", icon: "TrendUp" },
-    { id: "mixed", label: "Mixed Economy", desc: "Pragmatic balance of market forces and strategic government intervention in key sectors", examples: "Canada, South Korea, Brazil, Australia, South Africa", icon: "Scales" },
-    { id: "social-market", label: "Social Market Economy", desc: "Free market with strong social safety net, universal healthcare, worker protections, and robust public services", examples: "Germany, Japan, France, South Korea, Austria", icon: "FirstAid" },
-    { id: "state-led", label: "State-Led Economy", desc: "Government plays dominant role in economic planning, key industries, and resource allocation", examples: "China, Vietnam, Belarus, Qatar", icon: "HardHat" },
-    { id: "welfare-state", label: "Comprehensive Welfare State", desc: "Universal basic services funded by high taxation — healthcare, education, childcare, elder care", examples: "Sweden, Denmark, Norway, Finland", icon: "Shield" },
+    { id: "free-market", label: "Free Market Economy", desc: "Minimal state intervention, emphasis on private enterprise, deregulation, and individual economic freedom", examples: "USA, Singapore, Chile, Estonia", icon: "TrendUp", color: "#4ADE80" },
+    { id: "mixed", label: "Mixed Economy", desc: "Pragmatic balance of market forces and strategic government intervention in key sectors", examples: "Canada, South Korea, Brazil, Australia, South Africa", icon: "Scales", color: "#60A5FA" },
+    { id: "social-market", label: "Social Market Economy", desc: "Free market with strong social safety net, universal healthcare, worker protections, and robust public services", examples: "Germany, Japan, France, South Korea, Austria", icon: "FirstAid", color: "#F472B6" },
+    { id: "state-led", label: "State-Led Economy", desc: "Government plays dominant role in economic planning, key industries, and resource allocation", examples: "China, Vietnam, Belarus, Qatar", icon: "HardHat", color: "#FBBF24" },
+    { id: "welfare-state", label: "Comprehensive Welfare State", desc: "Universal basic services funded by high taxation — healthcare, education, childcare, elder care", examples: "Sweden, Denmark, Norway, Finland", icon: "Shield", color: "#2DD4BF" },
   ],
   // Options ordered alphabetically to avoid implied ranking
   checks: [
-    { id: "constructive-noconfidence", label: "Constructive No-Confidence", desc: "Legislature can only remove the head of government by simultaneously electing a successor — prevents destabilizing power vacuums", examples: "Germany, Spain, Belgium, Hungary", icon: "Link" },
-    { id: "fused-westminster", label: "Parliamentary Sovereignty", desc: "Executive drawn from legislature; parliament is the supreme authority and can rapidly pass or repeal legislation", examples: "UK, Australia, Canada, India, Japan", icon: "Bank" },
-    { id: "independent-bodies", label: "Independent Oversight Bodies", desc: "Anti-corruption agencies, ombudsmen, electoral commissions, central banks insulated from political interference", examples: "Singapore, South Africa, Nordics, Indonesia", icon: "MagnifyingGlass" },
-    { id: "judicial-supremacy", label: "Judicial Supremacy", desc: "Courts have final say on constitutionality; can strike down legislation and executive actions", examples: "USA, India, Germany, Colombia, Kenya", icon: "Scales" },
-    { id: "strong-separation", label: "Strong Separation of Powers", desc: "Fully independent branches — executive, legislative, judicial — with formal checks on each other through separate elections and fixed terms", examples: "USA, Philippines, Brazil, South Korea", icon: "Lock" },
+    { id: "constructive-noconfidence", label: "Constructive No-Confidence", desc: "Legislature can only remove the head of government by simultaneously electing a successor — prevents destabilizing power vacuums", examples: "Germany, Spain, Belgium, Hungary", icon: "Link", color: "#38BDF8" },
+    { id: "fused-westminster", label: "Parliamentary Sovereignty", desc: "Executive drawn from legislature; parliament is the supreme authority and can rapidly pass or repeal legislation", examples: "UK, Australia, Canada, India, Japan", icon: "Bank", color: "#A78BFA" },
+    { id: "independent-bodies", label: "Independent Oversight Bodies", desc: "Anti-corruption agencies, ombudsmen, electoral commissions, central banks insulated from political interference", examples: "Singapore, South Africa, Nordics, Indonesia", icon: "MagnifyingGlass", color: "#34D399" },
+    { id: "judicial-supremacy", label: "Judicial Supremacy", desc: "Courts have final say on constitutionality; can strike down legislation and executive actions", examples: "USA, India, Germany, Colombia, Kenya", icon: "Scales", color: "#FBBF24" },
+    { id: "strong-separation", label: "Strong Separation of Powers", desc: "Fully independent branches — executive, legislative, judicial — with formal checks on each other through separate elections and fixed terms", examples: "USA, Philippines, Brazil, South Korea", icon: "Lock", color: "#F87171" },
   ],
 };
 
@@ -144,36 +144,36 @@ export const DESIGN_PHASES: DesignPhase[] = [
 // ────────────────────────────────────────────────
 export const CIVIC_TRAITS: CivicTrait[] = [
   // Governance
-  { id: "meritocracy", label: "Meritocratic", desc: "Leaders selected by competence; civil service exams, professional bureaucracy", category: "governance", icon: "GraduationCap", effects: ["Improved government efficiency", "Reduced corruption"], incompatible: ["aristocratic"] },
-  { id: "aristocratic", label: "Aristocratic", desc: "Ruling class from established families; traditions of governance and noblesse oblige", category: "governance", icon: "CastleTurret", effects: ["Political stability from established networks", "Risk of ossified elite"], incompatible: ["meritocracy"] },
-  { id: "technocratic", label: "Technocratic", desc: "Policy driven by experts and data; scientists and economists guide major decisions", category: "governance", icon: "Flask", effects: ["Evidence-based policy", "May lack democratic legitimacy"], incompatible: ["populist"] },
-  { id: "populist", label: "Populist", desc: "Direct connection between leader and people; bypassing institutional intermediaries", category: "governance", icon: "Megaphone", effects: ["High mobilization of base", "Risk of institutional erosion"], incompatible: ["technocratic"] },
-  { id: "decentralist", label: "Decentralist", desc: "Maximum local autonomy; decisions made at the lowest effective level (subsidiarity)", category: "governance", icon: "SquaresFour", effects: ["Responsive local governance", "Potential coordination challenges"] },
+  { id: "meritocracy", label: "Meritocratic", desc: "Leaders selected by competence; civil service exams, professional bureaucracy", category: "governance", icon: "GraduationCap", color: "#60A5FA", effects: ["Improved government efficiency", "Reduced corruption"], incompatible: ["aristocratic"] },
+  { id: "aristocratic", label: "Aristocratic", desc: "Ruling class from established families; traditions of governance and noblesse oblige", category: "governance", icon: "CastleTurret", color: "#FBBF24", effects: ["Political stability from established networks", "Risk of ossified elite"], incompatible: ["meritocracy"] },
+  { id: "technocratic", label: "Technocratic", desc: "Policy driven by experts and data; scientists and economists guide major decisions", category: "governance", icon: "Flask", color: "#2DD4BF", effects: ["Evidence-based policy", "May lack democratic legitimacy"], incompatible: ["populist"] },
+  { id: "populist", label: "Populist", desc: "Direct connection between leader and people; bypassing institutional intermediaries", category: "governance", icon: "Megaphone", color: "#F87171", effects: ["High mobilization of base", "Risk of institutional erosion"], incompatible: ["technocratic"] },
+  { id: "decentralist", label: "Decentralist", desc: "Maximum local autonomy; decisions made at the lowest effective level (subsidiarity)", category: "governance", icon: "SquaresFour", color: "#A78BFA", effects: ["Responsive local governance", "Potential coordination challenges"] },
   // Social
-  { id: "pluralist", label: "Pluralist", desc: "Embraces diversity of cultures, languages, and identities within one polity", category: "social", icon: "Globe", effects: ["Cultural richness and innovation", "Requires robust integration policies"], incompatible: ["nationalist"] },
-  { id: "nationalist", label: "Nationalist", desc: "Strong national identity, cultural cohesion, and sovereignty over external influence", category: "social", icon: "Flag", effects: ["Clear national identity", "Tension with minorities and internationalism"], incompatible: ["pluralist"] },
-  { id: "progressive", label: "Progressive", desc: "Advocates rapid social reform, expanded civil rights, and modernization", category: "social", icon: "Plant", effects: ["Social innovation and rights expansion", "Cultural backlash risk"], incompatible: ["traditionalist"] },
-  { id: "traditionalist", label: "Traditionalist", desc: "Preserves established customs, institutions, and social order", category: "social", icon: "Diamond", effects: ["Social stability and continuity", "May resist needed reforms"], incompatible: ["progressive"] },
+  { id: "pluralist", label: "Pluralist", desc: "Embraces diversity of cultures, languages, and identities within one polity", category: "social", icon: "Globe", color: "#38BDF8", effects: ["Cultural richness and innovation", "Requires robust integration policies"], incompatible: ["nationalist"] },
+  { id: "nationalist", label: "Nationalist", desc: "Strong national identity, cultural cohesion, and sovereignty over external influence", category: "social", icon: "Flag", color: "#FB923C", effects: ["Clear national identity", "Tension with minorities and internationalism"], incompatible: ["pluralist"] },
+  { id: "progressive", label: "Progressive", desc: "Advocates rapid social reform, expanded civil rights, and modernization", category: "social", icon: "Plant", color: "#4ADE80", effects: ["Social innovation and rights expansion", "Cultural backlash risk"], incompatible: ["traditionalist"] },
+  { id: "traditionalist", label: "Traditionalist", desc: "Preserves established customs, institutions, and social order", category: "social", icon: "Diamond", color: "#C084FC", effects: ["Social stability and continuity", "May resist needed reforms"], incompatible: ["progressive"] },
   // Economic
-  { id: "merchant-republic", label: "Merchant Republic", desc: "Commerce is central to government; trade and business interests shape policy", category: "economic", icon: "Storefront", effects: ["Strong trade and economic growth", "Risk of plutocratic capture"] },
-  { id: "green-economy", label: "Green Economy", desc: "Environmental sustainability integrated into all economic policy", category: "economic", icon: "Recycle", effects: ["Long-term ecological sustainability", "Short-term economic transition costs"] },
-  { id: "innovation-hub", label: "Innovation Hub", desc: "Government actively promotes R&D, tech sector, and knowledge economy", category: "economic", icon: "Lightbulb", effects: ["High-tech growth and patents", "Digital divide risk"] },
+  { id: "merchant-republic", label: "Merchant Republic", desc: "Commerce is central to government; trade and business interests shape policy", category: "economic", icon: "Storefront", color: "#FBBF24", effects: ["Strong trade and economic growth", "Risk of plutocratic capture"] },
+  { id: "green-economy", label: "Green Economy", desc: "Environmental sustainability integrated into all economic policy", category: "economic", icon: "Recycle", color: "#4ADE80", effects: ["Long-term ecological sustainability", "Short-term economic transition costs"] },
+  { id: "innovation-hub", label: "Innovation Hub", desc: "Government actively promotes R&D, tech sector, and knowledge economy", category: "economic", icon: "Lightbulb", color: "#38BDF8", effects: ["High-tech growth and patents", "Digital divide risk"] },
   // Military
-  { id: "pacifist", label: "Pacifist", desc: "Renounces offensive military action; focuses on diplomacy and soft power", category: "military", icon: "Bird", effects: ["Reduced military spending, diplomatic credibility", "Vulnerable to aggressive neighbors"], incompatible: ["militarist"] },
-  { id: "militarist", label: "Militarist", desc: "Strong military tradition; armed forces as central institution of state", category: "military", icon: "Sword", effects: ["Powerful defense capability", "Risk of military overreach"], incompatible: ["pacifist"] },
-  { id: "neutral", label: "Neutral", desc: "Formal neutrality in international conflicts; focuses on diplomacy and mediation rather than military alliances", category: "military", icon: "Handshake", effects: ["International credibility as mediator", "Limited alliance options"] },
+  { id: "pacifist", label: "Pacifist", desc: "Renounces offensive military action; focuses on diplomacy and soft power", category: "military", icon: "Bird", color: "#67E8F9", effects: ["Reduced military spending, diplomatic credibility", "Vulnerable to aggressive neighbors"], incompatible: ["militarist"] },
+  { id: "militarist", label: "Militarist", desc: "Strong military tradition; armed forces as central institution of state", category: "military", icon: "Sword", color: "#F87171", effects: ["Powerful defense capability", "Risk of military overreach"], incompatible: ["pacifist"] },
+  { id: "neutral", label: "Neutral", desc: "Formal neutrality in international conflicts; focuses on diplomacy and mediation rather than military alliances", category: "military", icon: "Handshake", color: "#A78BFA", effects: ["International credibility as mediator", "Limited alliance options"] },
 ];
 
 // ────────────────────────────────────────────────
 // INTEREST GROUPS (Victoria 3-inspired)
 // ────────────────────────────────────────────────
 export const INTEREST_GROUPS: InterestGroup[] = [
-  { id: "military", label: "Military", icon: "Sword", desc: "Armed forces and security establishment" },
-  { id: "business", label: "Business / Capital", icon: "Buildings", desc: "Corporations, entrepreneurs, investors" },
-  { id: "labor", label: "Labor / Workers", icon: "Wrench", desc: "Unions, workers, employee organizations" },
-  { id: "intelligentsia", label: "Intelligentsia", icon: "GraduationCap", desc: "Academics, professionals, media, civil society" },
-  { id: "religious", label: "Religious Groups", icon: "Church", desc: "Faith communities and religious institutions" },
-  { id: "rural", label: "Rural / Landowners", icon: "Grains", desc: "Agricultural interests, rural communities" },
+  { id: "military", label: "Military", icon: "Sword", color: "#F87171", desc: "Armed forces and security establishment" },
+  { id: "business", label: "Business / Capital", icon: "Buildings", color: "#60A5FA", desc: "Corporations, entrepreneurs, investors" },
+  { id: "labor", label: "Labor / Workers", icon: "Wrench", color: "#FB923C", desc: "Unions, workers, employee organizations" },
+  { id: "intelligentsia", label: "Intelligentsia", icon: "GraduationCap", color: "#A78BFA", desc: "Academics, professionals, media, civil society" },
+  { id: "religious", label: "Religious Groups", icon: "Church", color: "#FBBF24", desc: "Faith communities and religious institutions" },
+  { id: "rural", label: "Rural / Landowners", icon: "Grains", color: "#4ADE80", desc: "Agricultural interests, rural communities" },
 ];
 
 // Interest group satisfaction based on selections
@@ -448,6 +448,7 @@ export const POLICY_SLIDERS = [
     low: "State-controlled media",
     high: "Fully independent press",
     icon: "Newspaper",
+    color: "#38BDF8",
   },
   {
     id: "civilRights",
@@ -456,6 +457,7 @@ export const POLICY_SLIDERS = [
     low: "Restricted rights",
     high: "Expansive civil liberties",
     icon: "Scales",
+    color: "#FB923C",
   },
   {
     id: "politicalParticipation",
@@ -464,6 +466,7 @@ export const POLICY_SLIDERS = [
     low: "Elite decision-making",
     high: "Direct democracy elements",
     icon: "UsersThree",
+    color: "#4ADE80",
   },
 ];
 
@@ -496,37 +499,38 @@ interface EmergentProperty {
   id: string;
   label: string;
   icon: string;
+  color: string;
   desc: string;
   conditions: (sel: Record<string, string>, civ: string[], sl: Record<string, number>) => boolean;
 }
 
 const EMERGENT_PROPERTIES: EmergentProperty[] = [
   // Institutional combos
-  { id: "nordic-model", label: "The Nordic Model", icon: "Snowflake", desc: "High-trust welfare state with proportional representation, strong unions, and press freedom. The gold standard of 'cuddly capitalism.'", conditions: (s, _c, sl) => s.economic === "welfare-state" && s.electoral === "proportional-list" && s.legislative === "unicameral" && (sl.pressFreedom ?? 50) >= 70 },
-  { id: "swiss-consensus", label: "Swiss Consensus Machine", icon: "Mountains", desc: "Directorial executive + federalism + direct democracy elements. Everyone gets a say, nothing moves fast, and it somehow works.", conditions: (s, _c, sl) => s.executive === "directorial" && s.federal === "federal" && (sl.politicalParticipation ?? 50) >= 75 },
-  { id: "westminster-express", label: "Westminster Express", icon: "Train", desc: "Parliamentary sovereignty with fused powers. Bills fly through, PMs are powerful, and the opposition's job is to oppose.", conditions: (s) => s.executive === "parliamentary" && s.checks === "fused-westminster" && s.legislative === "bicameral-majoritarian" },
-  { id: "american-experiment", label: "The American Experiment", icon: "Flag", desc: "Presidential system with strong separation, FPTP elections, and federal structure. A system designed by people who feared concentrated power.", conditions: (s) => s.authority === "democratic" && s.executive === "presidential" && s.checks === "strong-separation" && s.federal === "federal" && s.electoral === "fptp" },
-  { id: "german-engineering", label: "German Engineering", icon: "GearSix", desc: "MMP elections, constructive no-confidence, constitutional court, federal structure. Precision-built after learning hard lessons from history.", conditions: (s) => s.electoral === "mmp" && s.checks === "constructive-noconfidence" && s.judicial === "constitutional-court" && s.federal === "federal" },
-  { id: "iron-curtain", label: "The Vanguard State", icon: "Lock", desc: "Single-party state with a state-led economy and heavily restricted civil freedoms. The governing party positions itself as the sole legitimate representative of the people.", conditions: (s, _c, sl) => s.authority === "single-party" && s.economic === "state-led" && (sl.pressFreedom ?? 50) < 30 },
-  { id: "enlightened-autocracy", label: "Enlightened Autocracy", icon: "Sparkle", desc: "Autocratic authority paired with technocratic governance and economic growth. The 'benevolent dictator' dream — works until the dictator stops being benevolent.", conditions: (s, c) => s.authority === "autocratic" && c.includes("technocratic") && (s.economic === "state-led" || s.economic === "mixed") },
-  { id: "merchant-prince", label: "City of Merchant Princes", icon: "Storefront", desc: "Oligarchic authority with free markets and merchant republic traits. Money talks, and here it governs too.", conditions: (s, c) => s.authority === "oligarchic" && s.economic === "free-market" && c.includes("merchant-republic") },
-  { id: "green-utopia", label: "Green Utopia", icon: "Leaf", desc: "Democratic authority with a green economy, welfare state, and high civil rights. A model of sustainable governance that prioritizes ecological balance alongside social welfare.", conditions: (s, c, sl) => s.authority === "democratic" && c.includes("green-economy") && (s.economic === "welfare-state" || s.economic === "social-market") && (sl.civilRights ?? 50) >= 70 },
-  { id: "fortress-state", label: "Fortress State", icon: "CastleTurret", desc: "Militarist traditions with nationalist identity. A state defined by who it keeps out as much as who it lets in.", conditions: (_s, c) => c.includes("militarist") && c.includes("nationalist") },
-  { id: "cosmopolitan-hub", label: "Cosmopolitan Hub", icon: "Globe", desc: "Pluralist society with innovation focus and open markets. A magnet for talent, ideas, and capital from around the world.", conditions: (s, c) => c.includes("pluralist") && c.includes("innovation-hub") && (s.economic === "free-market" || s.economic === "mixed") },
-  { id: "peoples-republic", label: "People's Republic", icon: "Users", desc: "Democratic authority with populist leadership, high participation, and welfare spending. The masses rule, for better or worse.", conditions: (s, c, sl) => s.authority === "democratic" && c.includes("populist") && s.economic === "welfare-state" && (sl.politicalParticipation ?? 50) >= 70 },
-  { id: "theocratic-council", label: "Council of the Faithful", icon: "Book", desc: "Theocratic authority with traditionalist values and religious law. The sacred and the political are one.", conditions: (s, c) => s.authority === "theocratic" && c.includes("traditionalist") },
-  { id: "techno-meritocracy", label: "Silicon Republic", icon: "Desktop", desc: "Democratic meritocracy focused on innovation and technology. Data-driven governance with performance metrics at the centre of policy.", conditions: (s, c) => s.authority === "democratic" && c.includes("meritocracy") && c.includes("innovation-hub") },
-  { id: "peaceful-federation", label: "Peace Federation", icon: "Bird", desc: "Federal pacifist democracy with strong civil rights. Devoted to diplomacy, mediation, and the belief that war is never the answer.", conditions: (s, c, sl) => s.authority === "democratic" && s.federal === "federal" && c.includes("pacifist") && (sl.civilRights ?? 50) >= 70 },
-  { id: "crowned-republic", label: "The Crowned Republic", icon: "Crown", desc: "Constitutional monarchy with progressive values and proportional representation. Ancient crown, modern heart.", conditions: (s, c) => s.executive === "constitutional-monarchy" && c.includes("progressive") && s.electoral === "proportional-list" },
-  { id: "decentralized-web", label: "The Decentralized Web", icon: "ShareNetwork", desc: "Federal or confederal structure with strong decentralist values and high participation. Power flows from the bottom up.", conditions: (s, c, sl) => (s.federal === "federal" || s.federal === "confederal") && c.includes("decentralist") && (sl.politicalParticipation ?? 50) >= 60 },
-  { id: "aristocratic-order", label: "The Old Order", icon: "Bank", desc: "Oligarchic authority with aristocratic traditions and a constitutional monarchy. Noblesse oblige as state philosophy.", conditions: (s, c) => s.authority === "oligarchic" && c.includes("aristocratic") && s.executive === "constitutional-monarchy" },
+  { id: "nordic-model", label: "The Nordic Model", icon: "Snowflake", color: "#67E8F9", desc: "High-trust welfare state with proportional representation, strong unions, and press freedom. The gold standard of 'cuddly capitalism.'", conditions: (s, _c, sl) => s.economic === "welfare-state" && s.electoral === "proportional-list" && s.legislative === "unicameral" && (sl.pressFreedom ?? 50) >= 70 },
+  { id: "swiss-consensus", label: "Swiss Consensus Machine", icon: "Mountains", color: "#A78BFA", desc: "Directorial executive + federalism + direct democracy elements. Everyone gets a say, nothing moves fast, and it somehow works.", conditions: (s, _c, sl) => s.executive === "directorial" && s.federal === "federal" && (sl.politicalParticipation ?? 50) >= 75 },
+  { id: "westminster-express", label: "Westminster Express", icon: "Train", color: "#F87171", desc: "Parliamentary sovereignty with fused powers. Bills fly through, PMs are powerful, and the opposition's job is to oppose.", conditions: (s) => s.executive === "parliamentary" && s.checks === "fused-westminster" && s.legislative === "bicameral-majoritarian" },
+  { id: "american-experiment", label: "The American Experiment", icon: "Flag", color: "#60A5FA", desc: "Presidential system with strong separation, FPTP elections, and federal structure. A system designed by people who feared concentrated power.", conditions: (s) => s.authority === "democratic" && s.executive === "presidential" && s.checks === "strong-separation" && s.federal === "federal" && s.electoral === "fptp" },
+  { id: "german-engineering", label: "German Engineering", icon: "GearSix", color: "#FBBF24", desc: "MMP elections, constructive no-confidence, constitutional court, federal structure. Precision-built after learning hard lessons from history.", conditions: (s) => s.electoral === "mmp" && s.checks === "constructive-noconfidence" && s.judicial === "constitutional-court" && s.federal === "federal" },
+  { id: "iron-curtain", label: "The Vanguard State", icon: "Lock", color: "#EF4444", desc: "Single-party state with a state-led economy and heavily restricted civil freedoms. The governing party positions itself as the sole legitimate representative of the people.", conditions: (s, _c, sl) => s.authority === "single-party" && s.economic === "state-led" && (sl.pressFreedom ?? 50) < 30 },
+  { id: "enlightened-autocracy", label: "Enlightened Autocracy", icon: "Sparkle", color: "#FFD700", desc: "Autocratic authority paired with technocratic governance and economic growth. The 'benevolent dictator' dream — works until the dictator stops being benevolent.", conditions: (s, c) => s.authority === "autocratic" && c.includes("technocratic") && (s.economic === "state-led" || s.economic === "mixed") },
+  { id: "merchant-prince", label: "City of Merchant Princes", icon: "Storefront", color: "#FBBF24", desc: "Oligarchic authority with free markets and merchant republic traits. Money talks, and here it governs too.", conditions: (s, c) => s.authority === "oligarchic" && s.economic === "free-market" && c.includes("merchant-republic") },
+  { id: "green-utopia", label: "Green Utopia", icon: "Leaf", color: "#4ADE80", desc: "Democratic authority with a green economy, welfare state, and high civil rights. A model of sustainable governance that prioritizes ecological balance alongside social welfare.", conditions: (s, c, sl) => s.authority === "democratic" && c.includes("green-economy") && (s.economic === "welfare-state" || s.economic === "social-market") && (sl.civilRights ?? 50) >= 70 },
+  { id: "fortress-state", label: "Fortress State", icon: "CastleTurret", color: "#94A3B8", desc: "Militarist traditions with nationalist identity. A state defined by who it keeps out as much as who it lets in.", conditions: (_s, c) => c.includes("militarist") && c.includes("nationalist") },
+  { id: "cosmopolitan-hub", label: "Cosmopolitan Hub", icon: "Globe", color: "#38BDF8", desc: "Pluralist society with innovation focus and open markets. A magnet for talent, ideas, and capital from around the world.", conditions: (s, c) => c.includes("pluralist") && c.includes("innovation-hub") && (s.economic === "free-market" || s.economic === "mixed") },
+  { id: "peoples-republic", label: "People's Republic", icon: "Users", color: "#F87171", desc: "Democratic authority with populist leadership, high participation, and welfare spending. The masses rule, for better or worse.", conditions: (s, c, sl) => s.authority === "democratic" && c.includes("populist") && s.economic === "welfare-state" && (sl.politicalParticipation ?? 50) >= 70 },
+  { id: "theocratic-council", label: "Council of the Faithful", icon: "Book", color: "#F59E0B", desc: "Theocratic authority with traditionalist values and religious law. The sacred and the political are one.", conditions: (s, c) => s.authority === "theocratic" && c.includes("traditionalist") },
+  { id: "techno-meritocracy", label: "Silicon Republic", icon: "Desktop", color: "#2DD4BF", desc: "Democratic meritocracy focused on innovation and technology. Data-driven governance with performance metrics at the centre of policy.", conditions: (s, c) => s.authority === "democratic" && c.includes("meritocracy") && c.includes("innovation-hub") },
+  { id: "peaceful-federation", label: "Peace Federation", icon: "Bird", color: "#67E8F9", desc: "Federal pacifist democracy with strong civil rights. Devoted to diplomacy, mediation, and the belief that war is never the answer.", conditions: (s, c, sl) => s.authority === "democratic" && s.federal === "federal" && c.includes("pacifist") && (sl.civilRights ?? 50) >= 70 },
+  { id: "crowned-republic", label: "The Crowned Republic", icon: "Crown", color: "#FFD700", desc: "Constitutional monarchy with progressive values and proportional representation. Ancient crown, modern heart.", conditions: (s, c) => s.executive === "constitutional-monarchy" && c.includes("progressive") && s.electoral === "proportional-list" },
+  { id: "decentralized-web", label: "The Decentralized Web", icon: "ShareNetwork", color: "#C084FC", desc: "Federal or confederal structure with strong decentralist values and high participation. Power flows from the bottom up.", conditions: (s, c, sl) => (s.federal === "federal" || s.federal === "confederal") && c.includes("decentralist") && (sl.politicalParticipation ?? 50) >= 60 },
+  { id: "aristocratic-order", label: "The Old Order", icon: "Bank", color: "#94A3B8", desc: "Oligarchic authority with aristocratic traditions and a constitutional monarchy. Noblesse oblige as state philosophy.", conditions: (s, c) => s.authority === "oligarchic" && c.includes("aristocratic") && s.executive === "constitutional-monarchy" },
 ];
 
 export function getEmergentProperties(
   selections: Record<string, string>,
   civics: string[],
   sliders: Record<string, number>,
-): { id: string; label: string; icon: string; desc: string }[] {
+): { id: string; label: string; icon: string; color: string; desc: string }[] {
   return EMERGENT_PROPERTIES.filter((ep) => ep.conditions(selections, civics, sliders));
 }
 
