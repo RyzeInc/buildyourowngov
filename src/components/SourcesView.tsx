@@ -5,26 +5,64 @@ import { getPublishers, type Publisher } from "@/data/education";
 
 const COLS = 3;
 
+const ALL_SECTIONS = [
+  "Checks & Balances",
+  "Executive System",
+  "Federal Structure",
+  "Global Indices",
+  "Judicial System",
+  "Legislative System",
+  "Economic System",
+];
+
 export default function SourcesView() {
   const publishers = useMemo(
     () => getPublishers().sort((a, b) => a.name.localeCompare(b.name)),
     [],
   );
   const [filter, setFilter] = useState("");
+  const [filterSection, setFilterSection] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState<"name" | "founded" | "publications">("name");
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [view, setView] = useState<"cards" | "list">("cards");
 
+  // Stable color map — based on full publisher list so colors never shift
+  const colorMap = useMemo(() => {
+    const m = new Map<number, number>();
+    publishers.forEach((p, i) => m.set(p.id, i));
+    return m;
+  }, [publishers]);
+
   const filtered = useMemo(() => {
-    if (!filter) return publishers;
-    const q = filter.toLowerCase();
-    return publishers.filter(
-      (p) =>
-        p.name.toLowerCase().includes(q) ||
-        (p.abbreviation && p.abbreviation.toLowerCase().includes(q)) ||
-        p.type.toLowerCase().includes(q) ||
-        p.publications.some((pub) => pub.name.toLowerCase().includes(q)),
-    );
-  }, [publishers, filter]);
+    let list = publishers.filter((p) => {
+      if (filter) {
+        const q = filter.toLowerCase();
+        const textMatch =
+          p.name.toLowerCase().includes(q) ||
+          (p.abbreviation && p.abbreviation.toLowerCase().includes(q)) ||
+          p.type.toLowerCase().includes(q) ||
+          p.publications.some((pub) => pub.name.toLowerCase().includes(q));
+        if (!textMatch) return false;
+      }
+      if (filterSection) {
+        const hasSection = p.publications.some((pub) =>
+          pub.sections.includes(filterSection),
+        );
+        if (!hasSection) return false;
+      }
+      return true;
+    });
+
+    if (sortBy === "name") {
+      list = [...list].sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === "founded") {
+      list = [...list].sort((a, b) => parseInt(a.founded) - parseInt(b.founded));
+    } else if (sortBy === "publications") {
+      list = [...list].sort((a, b) => b.publications.length - a.publications.length);
+    }
+
+    return list;
+  }, [publishers, filter, filterSection, sortBy]);
 
   const expandedPublisher = useMemo(
     () => filtered.find((p) => p.id === expandedId) ?? null,
@@ -46,13 +84,6 @@ export default function SourcesView() {
     const flatIdx = filtered.findIndex((p) => p.id === expandedId);
     return flatIdx === -1 ? -1 : Math.floor(flatIdx / COLS);
   }, [filtered, expandedId]);
-
-  // Color index lookup (stable per publisher across views)
-  const colorMap = useMemo(() => {
-    const m = new Map<number, number>();
-    filtered.forEach((p, i) => m.set(p.id, i));
-    return m;
-  }, [filtered]);
 
   return (
     <div style={{ animation: "fadeIn 0.3s ease" }}>
@@ -125,13 +156,13 @@ export default function SourcesView() {
         </div>
       </div>
 
-      {/* Search */}
+      {/* Search row */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           gap: 12,
-          marginBottom: 20,
+          marginBottom: 12,
           flexWrap: "wrap",
         }}
       >
@@ -148,7 +179,7 @@ export default function SourcesView() {
             color: "#fff",
             fontSize: 13,
             outline: "none",
-            width: 300,
+            width: 260,
             transition: "border-color 0.15s",
           }}
           onFocus={(e) =>
@@ -158,10 +189,77 @@ export default function SourcesView() {
             (e.target.style.borderColor = "rgba(255,255,255,0.08)")
           }
         />
-        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>
-          {filtered.length} organization{filtered.length !== 1 ? "s" : ""} ·{" "}
+
+        {/* Sort */}
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>Sort</span>
+          {(["name", "founded", "publications"] as const).map((s) => (
+            <button
+              key={s}
+              onClick={() => setSortBy(s)}
+              style={{
+                background: sortBy === s ? "rgba(255,255,255,0.08)" : "transparent",
+                border: `1px solid ${sortBy === s ? "rgba(255,255,255,0.14)" : "rgba(255,255,255,0.06)"}`,
+                borderRadius: 6,
+                padding: "4px 10px",
+                color: sortBy === s ? "#fff" : "rgba(255,255,255,0.35)",
+                fontSize: 11,
+                cursor: "pointer",
+                fontWeight: sortBy === s ? 500 : 400,
+                transition: "all 0.15s",
+              }}
+            >
+              {s === "name" ? "A – Z" : s === "founded" ? "Founded" : "Most cited"}
+            </button>
+          ))}
+        </div>
+
+        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.2)", marginLeft: "auto" }}>
+          {filtered.length} org{filtered.length !== 1 ? "s" : ""} ·{" "}
           {filtered.reduce((n, p) => n + p.publications.length, 0)} publications
         </span>
+      </div>
+
+      {/* Section filter pills */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
+        <button
+          onClick={() => setFilterSection(null)}
+          style={{
+            background: filterSection === null ? "rgba(139,92,246,0.15)" : "rgba(255,255,255,0.03)",
+            border: `1px solid ${filterSection === null ? "rgba(139,92,246,0.35)" : "rgba(255,255,255,0.07)"}`,
+            borderRadius: 20,
+            padding: "5px 14px",
+            color: filterSection === null ? "rgba(139,92,246,0.9)" : "rgba(255,255,255,0.35)",
+            fontSize: 12,
+            fontWeight: filterSection === null ? 600 : 400,
+            cursor: "pointer",
+            transition: "all 0.15s",
+          }}
+        >
+          All sections
+        </button>
+        {ALL_SECTIONS.map((sec) => {
+          const active = filterSection === sec;
+          return (
+            <button
+              key={sec}
+              onClick={() => setFilterSection(active ? null : sec)}
+              style={{
+                background: active ? "rgba(139,92,246,0.15)" : "rgba(255,255,255,0.03)",
+                border: `1px solid ${active ? "rgba(139,92,246,0.35)" : "rgba(255,255,255,0.07)"}`,
+                borderRadius: 20,
+                padding: "5px 14px",
+                color: active ? "rgba(139,92,246,0.9)" : "rgba(255,255,255,0.35)",
+                fontSize: 12,
+                fontWeight: active ? 600 : 400,
+                cursor: "pointer",
+                transition: "all 0.15s",
+              }}
+            >
+              {sec}
+            </button>
+          );
+        })}
       </div>
 
       {/* ─── CARD VIEW ─── */}
@@ -201,6 +299,7 @@ export default function SourcesView() {
                     publisher={expandedPublisher}
                     colorIndex={colorMap.get(expandedPublisher.id) ?? 0}
                     onClose={() => setExpandedId(null)}
+                    activeSection={filterSection}
                   />
                 </div>
               )}
@@ -365,21 +464,26 @@ export default function SourcesView() {
                         )}
 
                         {/* Section tags inline */}
-                        {entry.sections.map((sec) => (
-                          <span
-                            key={sec}
-                            style={{
-                              fontSize: 9,
-                              color: "rgba(255,255,255,0.3)",
-                              background: "rgba(255,255,255,0.03)",
-                              padding: "1px 6px",
-                              borderRadius: 3,
-                              whiteSpace: "nowrap",
-                            }}
-                          >
-                            {sec}
-                          </span>
-                        ))}
+                        {entry.sections.map((sec) => {
+                          const isMatch = filterSection === sec;
+                          return (
+                            <span
+                              key={sec}
+                              style={{
+                                fontSize: 9,
+                                color: isMatch ? accent.text : "rgba(255,255,255,0.3)",
+                                background: isMatch ? accent.bg : "rgba(255,255,255,0.03)",
+                                border: `1px solid ${isMatch ? accent.border : "transparent"}`,
+                                padding: "1px 6px",
+                                borderRadius: 3,
+                                whiteSpace: "nowrap",
+                                fontWeight: isMatch ? 600 : 400,
+                              }}
+                            >
+                              {sec}
+                            </span>
+                          );
+                        })}
                       </div>
                     ))}
                   </div>
@@ -700,10 +804,12 @@ function DetailPanel({
   publisher,
   colorIndex,
   onClose,
+  activeSection,
 }: {
   publisher: Publisher;
   colorIndex: number;
   onClose: () => void;
+  activeSection?: string | null;
 }) {
   const accent = CARD_ACCENTS[colorIndex % CARD_ACCENTS.length];
   const monogram = publisher.abbreviation ?? publisher.name.split(" ").map(w => w[0]).join("").slice(0, 3);
@@ -823,22 +929,27 @@ function DetailPanel({
                 flexWrap: "wrap",
               }}
             >
-              {allSections.map((sec) => (
-                <span
-                  key={sec}
-                  style={{
-                    fontSize: 10,
-                    color: accent.text,
-                    background: accent.bg,
-                    padding: "2px 8px",
-                    borderRadius: 4,
-                    border: `1px solid ${accent.border}`,
-                    fontWeight: 500,
-                  }}
-                >
-                  {sec}
-                </span>
-              ))}
+              {allSections.map((sec) => {
+                const isMatch = activeSection === sec;
+                return (
+                  <span
+                    key={sec}
+                    style={{
+                      fontSize: 10,
+                      color: accent.text,
+                      background: isMatch ? accent.bg : "rgba(255,255,255,0.04)",
+                      padding: "2px 8px",
+                      borderRadius: 4,
+                      border: `1px solid ${isMatch ? accent.border : "rgba(255,255,255,0.06)"}`,
+                      fontWeight: isMatch ? 700 : 400,
+                      opacity: activeSection && !isMatch ? 0.4 : 1,
+                      transition: "opacity 0.15s",
+                    }}
+                  >
+                    {sec}
+                  </span>
+                );
+              })}
             </div>
           </div>
 
@@ -1014,20 +1125,26 @@ function DetailPanel({
                       flexWrap: "wrap",
                     }}
                   >
-                    {pub.sections.map((sec) => (
-                      <span
-                        key={sec}
-                        style={{
-                          fontSize: 9,
-                          color: "rgba(255,255,255,0.3)",
-                          background: "rgba(255,255,255,0.03)",
-                          padding: "1px 6px",
-                          borderRadius: 3,
-                        }}
-                      >
-                        {sec}
-                      </span>
-                    ))}
+                    {pub.sections.map((sec) => {
+                        const isMatch = activeSection === sec;
+                        return (
+                          <span
+                            key={sec}
+                            style={{
+                              fontSize: 9,
+                              color: isMatch ? accent.text : "rgba(255,255,255,0.3)",
+                              background: isMatch ? accent.bg : "rgba(255,255,255,0.03)",
+                              border: `1px solid ${isMatch ? accent.border : "transparent"}`,
+                              padding: "1px 6px",
+                              borderRadius: 3,
+                              fontWeight: isMatch ? 600 : 400,
+                              opacity: activeSection && !isMatch ? 0.5 : 1,
+                            }}
+                          >
+                            {sec}
+                          </span>
+                        );
+                    })}
                   </div>
                 </div>
               </div>

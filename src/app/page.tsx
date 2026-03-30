@@ -129,7 +129,8 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
-          gap: 12,
+          rowGap: 12,
+          columnGap: 12,
         }}
       >
         <div>
@@ -159,7 +160,8 @@ export default function Home() {
         <div
           style={{
             display: "flex",
-            gap: 4,
+            rowGap: 4,
+            columnGap: 4,
             background: "rgba(255,255,255,0.03)",
             borderRadius: 8,
             padding: 3,
@@ -200,7 +202,8 @@ export default function Home() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: 8,
+                rowGap: 8,
+                columnGap: 8,
                 marginBottom: 12,
                 alignItems: "center",
               }}
@@ -228,7 +231,7 @@ export default function Home() {
                   (e.target.style.borderColor = "rgba(255,255,255,0.08)")
                 }
               />
-              <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", rowGap: 4, columnGap: 4, flexWrap: "wrap" }}>
                 {[
                   "All",
                   "Presidential",
@@ -288,7 +291,8 @@ export default function Home() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: 8,
+                rowGap: 8,
+                columnGap: 8,
                 marginBottom: 16,
                 alignItems: "center",
               }}
@@ -352,7 +356,8 @@ export default function Home() {
                   transition: "all 0.15s",
                   display: "flex",
                   alignItems: "center",
-                  gap: 4,
+                  rowGap: 4,
+                  columnGap: 4,
                 }}
               >
                 {sortDir === "asc" ? "↑ Low → High" : "↓ High → Low"}
@@ -404,7 +409,8 @@ export default function Home() {
                   marginBottom: 14,
                   display: "flex",
                   alignItems: "center",
-                  gap: 10,
+                  rowGap: 10,
+                  columnGap: 10,
                 }}
               >
                 <div
@@ -437,7 +443,8 @@ export default function Home() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-                gap: 12,
+                rowGap: 12,
+                columnGap: 12,
               }}
             >
               {sorted.map((c) => (

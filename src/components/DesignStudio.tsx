@@ -24,13 +24,26 @@ import {
 } from "@/data/constants";
 import type { CivicTrait } from "@/data/types";
 import AppIcon from "@/components/AppIcon";
-import { Save, FolderOpen, Share2, Eye, Sparkles, History, BarChart2 } from "lucide-react";
+import { FloppyDisk, FolderOpen, Eye, ShareNetwork, Sparkle, ClockCounterClockwise, ChartBar } from "@phosphor-icons/react";
 
 const MAX_CIVICS = 3;
 const PAGE_BG_COLOR = "#0F0F13";
 const DESIGN_KEY = "byog-design";
 const SAVES_KEY = "byog-saves";
 const MAX_SAVES = 10;
+
+const PHASE_COLORS: Record<string, string> = {
+  foundation: "#A855F7",
+  institutions: "#06B6D4",
+  governance: "#22C55E",
+  identity: "#EC4899",
+};
+
+const SLIDER_COLORS: Record<string, string> = {
+  pressFreedom: "#06B6D4",
+  civilRights: "#F97316",
+  politicalParticipation: "#22C55E",
+};
 
 export default function DesignStudio() {
   const [selections, setSelections] = useState<Record<string, string>>({});
@@ -416,7 +429,7 @@ export default function DesignStudio() {
             transition: "all 0.15s",
           }}
         >
-          <Save size={12} style={{ flexShrink: 0 }} /> Save
+          <FloppyDisk size={14} weight="bold" style={{ flexShrink: 0 }} /> Save
         </button>
         <button
           onClick={() => setShowSaves((v) => !v)}
@@ -431,7 +444,7 @@ export default function DesignStudio() {
             transition: "all 0.15s",
           }}
         >
-          <FolderOpen size={12} style={{ flexShrink: 0 }} /> Saved{saves.length > 0 ? ` (${saves.length})` : ""}
+          <FolderOpen size={14} weight="bold" style={{ flexShrink: 0 }} /> Saved{saves.length > 0 ? ` (${saves.length})` : ""}
         </button>
         <button
           onClick={shareDesign}
@@ -448,7 +461,7 @@ export default function DesignStudio() {
             transition: "all 0.15s",
           }}
         >
-          <Share2 size={12} style={{ flexShrink: 0 }} /> Share
+          <ShareNetwork size={14} weight="bold" style={{ flexShrink: 0 }} /> Share
         </button>
         <button
           onClick={clearDesign}
@@ -495,7 +508,7 @@ export default function DesignStudio() {
               padding: "4px 10px",
             }}
           >
-            <Eye size={11} style={{ flexShrink: 0 }} /> Viewing shared design
+            <Eye size={13} weight="bold" style={{ flexShrink: 0 }} /> Viewing shared design
           </span>
         )}
       </div>
@@ -732,8 +745,14 @@ export default function DesignStudio() {
                 textAlign: "center",
               }}
             >
-              <AppIcon name={phase.icon} size={14} style={{ marginBottom: 4 }} />
-              <div style={{ fontSize: 11, fontWeight: 700, color: isActive ? "#8B5CF6" : "rgba(255,255,255,0.6)", letterSpacing: "0.02em" }}>{phase.label}</div>
+              <AppIcon
+                name={phase.icon}
+                size={16}
+                weight={isActive ? "fill" : "regular"}
+                color={isActive ? (PHASE_COLORS[phase.id] ?? "#8B5CF6") : `${PHASE_COLORS[phase.id] ?? "#8B5CF6"}55`}
+                style={{ marginBottom: 4 }}
+              />
+              <div style={{ fontSize: 11, fontWeight: 700, color: isActive ? (PHASE_COLORS[phase.id] ?? "#8B5CF6") : "rgba(255,255,255,0.6)", letterSpacing: "0.02em" }}>{phase.label}</div>
               <div
                 style={{
                   fontSize: 10,
@@ -768,6 +787,12 @@ export default function DesignStudio() {
           disabled={completedCategories < 2}
         >
 
+          <ChartBar
+            size={16}
+            weight={showAnalysis ? "fill" : "regular"}
+            color={showAnalysis ? "#14B8A6" : "rgba(20,184,166,0.45)"}
+            style={{ marginBottom: 4 }}
+          />
           <div
             style={{
               fontSize: 11,
@@ -797,7 +822,7 @@ export default function DesignStudio() {
                 fontFamily: "var(--font-fraunces)",
               }}
             >
-              <AppIcon name={currentPhase.icon} size={15} style={{ marginRight: 6, opacity: 0.9 }} />{currentPhase.label}
+              <AppIcon name={currentPhase.icon} size={20} weight="duotone" color={PHASE_COLORS[currentPhase.id] ?? "#8B5CF6"} style={{ marginRight: 8 }} />{currentPhase.label}
             </div>
             <div style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>
               {currentPhase.desc}
@@ -850,7 +875,7 @@ export default function DesignStudio() {
                       }}
                     >
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#fff", display: "flex", alignItems: "center", gap: 5 }}>
-                        <AppIcon name={s.icon} size={14} />{s.label}
+                        <AppIcon name={s.icon} size={16} weight="duotone" color={SLIDER_COLORS[s.id] ?? "#A855F7"} />{s.label}
                       </div>
                       <div
                         style={{
@@ -1581,7 +1606,7 @@ export default function DesignStudio() {
                   marginBottom: 14,
                 }}
               >
-                <Sparkles size={13} style={{ flexShrink: 0 }} /> Unlocked Emergent Properties
+                <Sparkle size={15} weight="fill" color="#FBBF24" style={{ flexShrink: 0 }} /> Unlocked Emergent Properties
               </div>
               {emergentPerks.map((perk) => (
                 <div
@@ -1816,7 +1841,7 @@ export default function DesignStudio() {
                 marginBottom: 10,
               }}
             >
-              <History size={13} style={{ flexShrink: 0 }} /> Historical Precedent
+              <ClockCounterClockwise size={15} weight="bold" color="#A855F7" style={{ flexShrink: 0 }} /> Historical Precedent
             </div>
             <div
               style={{
@@ -1910,7 +1935,7 @@ function OptionButton({
       onMouseLeave={handleMouseLeave}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
-        {opt.icon && <AppIcon name={opt.icon} size={14} />}
+        {opt.icon && <AppIcon name={opt.icon} size={18} weight={isSelected ? "fill" : "duotone"} color={isSelected ? colors.accent : `${colors.accent}88`} />}
         <span
           style={{
             fontWeight: 600,
