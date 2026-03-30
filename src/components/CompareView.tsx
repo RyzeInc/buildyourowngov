@@ -108,7 +108,7 @@ export default function CompareView({ codes, countries }: CompareViewProps) {
                 background: "#0F0F13",
               }}
             >
-              RSF Press Freedom
+              Voice & Accountability
             </td>
             {selected.map((c) => (
               <td

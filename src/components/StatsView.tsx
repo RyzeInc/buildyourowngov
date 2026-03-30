@@ -106,6 +106,21 @@ export default function StatsView() {
 
       <div
         style={{
+          background: "rgba(255,193,7,0.06)",
+          border: "1px solid rgba(255,193,7,0.15)",
+          borderRadius: 10,
+          padding: "12px 16px",
+          marginBottom: 20,
+          fontSize: 12,
+          color: "rgba(255,255,255,0.5)",
+          lineHeight: 1.6,
+        }}
+      >
+        <strong style={{ color: "rgba(255,193,7,0.8)" }}>Source:</strong> World Bank Worldwide Governance Indicators — Voice & Accountability (2023 percentile rank). This composite index draws on 30+ independent data sources covering perceptions of media freedom, civil liberties, and political participation. Descriptions below are factual summaries of media ownership structures, legal frameworks, commercial incentives, and public options — the same template is applied to every country. Users are encouraged to draw their own conclusions.
+      </div>
+
+      <div
+        style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 16,
@@ -164,7 +179,7 @@ export default function StatsView() {
               marginBottom: 4,
             }}
           >
-            Avg. RSF score
+            Avg. Voice & Accountability
           </div>
           <div
             style={{
@@ -287,7 +302,7 @@ export default function StatsView() {
               marginBottom: 12,
             }}
           >
-            RSF top 5 (freest press)
+            Voice & Accountability: top 5
           </div>
           {topMedia.map((c) => (
             <div
@@ -329,7 +344,7 @@ export default function StatsView() {
               marginBottom: 12,
             }}
           >
-            RSF bottom 5 (least free press)
+            Voice & Accountability: bottom 5
           </div>
           {bottomMedia.map((c) => (
             <div

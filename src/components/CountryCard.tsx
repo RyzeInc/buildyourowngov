@@ -2,7 +2,6 @@
 
 import type { Country } from "@/data/types";
 import { FLAG_EMOJI } from "@/data/constants";
-import MediaBar from "./MediaBar";
 
 interface CountryCardProps {
   country: Country;
@@ -10,6 +9,12 @@ interface CountryCardProps {
   isCompare: boolean;
   onToggleCompare?: (code: string) => void;
   compact?: boolean;
+  sortIndex?: {
+    value: number | null;
+    format: (v: number) => string;
+    color: string;
+    label: string;
+  };
 }
 
 export default function CountryCard({
@@ -18,6 +23,7 @@ export default function CountryCard({
   isCompare,
   onToggleCompare,
   compact,
+  sortIndex,
 }: CountryCardProps) {
   const govColor =
     country.govType.includes("Presidential") &&
@@ -136,22 +142,48 @@ export default function CountryCard({
             style={{
               fontSize: 12,
               color: "rgba(255,255,255,0.5)",
-              marginBottom: 4,
-            }}
-          >
-            RSF Press Freedom Index
-          </div>
-          <MediaBar score={country.mediaScore} rank={country.rsfRank} />
-          <div
-            style={{
-              fontSize: 12,
-              color: "rgba(255,255,255,0.5)",
               marginTop: 8,
             }}
           >
             {country.federal} · {country.legislativeType}
           </div>
         </>
+      )}
+
+      {/* Sort index badge — appears when sorting by an index */}
+      {sortIndex && (
+        <div
+          style={{
+            marginTop: compact ? 6 : 10,
+            paddingTop: compact ? 6 : 8,
+            borderTop: "1px solid rgba(255,255,255,0.04)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span
+            style={{
+              fontSize: 10,
+              color: "rgba(255,255,255,0.3)",
+              textTransform: "uppercase",
+              letterSpacing: "0.04em",
+              fontWeight: 500,
+            }}
+          >
+            {sortIndex.label}
+          </span>
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 700,
+              color: sortIndex.value !== null ? sortIndex.color : "rgba(255,255,255,0.15)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {sortIndex.value !== null ? sortIndex.format(sortIndex.value) : "No data"}
+          </span>
+        </div>
       )}
     </div>
   );
