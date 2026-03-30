@@ -729,9 +729,9 @@ export default function DesignStudio() {
                 flex: "1 1 0",
                 minWidth: 0,
                 background: isActive
-                  ? "rgba(139,92,246,0.15)"
+                  ? `${PHASE_COLORS[phase.id] ?? "#8B5CF6"}20`
                   : "rgba(255,255,255,0.02)",
-                border: `1.5px solid ${isActive ? "#8B5CF6" : "rgba(255,255,255,0.06)"}`,
+                border: `1.5px solid ${isActive ? (PHASE_COLORS[phase.id] ?? "#8B5CF6") : "rgba(255,255,255,0.06)"}`,
                 borderRadius: 10,
                 padding: "10px 12px",
                 cursor: "pointer",
